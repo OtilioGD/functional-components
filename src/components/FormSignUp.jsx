@@ -3,22 +3,33 @@ import { Button, TextField, Switch, FormGroup, FormControlLabel } from "@mui/mat
 
 const FormSignUp = () => {
 
-    const [name, setName] = useState('OTILIO');
+    const [name, setName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [prom, setProm] = useState(true);
+    const [nov, setNov] = useState(false);
 
-    return <form>
+    return <form onSubmit={(e) =>{
+        e.preventDefault();
+        console.log({name, lastName, email, prom, nov});
+    }}>
     
         <TextField id='name' label='Nombre' variant="outlined" fullWidth margin="normal"
-        onChange={(e)=> {console.log(name); setName(e.target.value);}}
+        onChange={(e)=> {setName(e.target.value);}}
         value={name}/>
-        <TextField id='lastName' label='Apellidos' variant="outlined" fullWidth margin="normal"/>
-        <TextField id='email' label='Email' variant="outlined" fullWidth margin="normal"/>
+        <TextField id='lastName' label='Apellidos' variant="outlined" fullWidth margin="normal"
+        onChange={(e)=> {setLastName(e.target.value);}}
+        value={lastName}/>
+        <TextField id='email' label='Email' variant="outlined" fullWidth margin="normal"
+        onChange={(e)=> {setEmail(e.target.value);}}
+        value={email}/>
    
         <FormGroup>
-        <FormControlLabel control={<Switch defaultChecked />} label='Promociones'/>
-        <FormControlLabel control={<Switch defaultChecked />} label='Novedades'/>
+        <FormControlLabel control={<Switch checked={prom} onChange={(e) => setProm(e.target.checked)} />} label='Promociones'/>
+        <FormControlLabel control={<Switch checked={nov} onChange={(e) => setNov(e.target.checked)} />} label='Novedades'/>
         </FormGroup>
 
-        <Button variant="contained">Registrarse</Button>
+        <Button variant="contained" type="submit">Registrarse</Button>
     </form>
 }
 
