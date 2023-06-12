@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Button, TextField, Switch, FormGroup, FormControlLabel } from "@mui/material";
 
-const FormSignUp = () => {
+const FormSignUp = (props) => {
+
+    const {handleSubmit} = props;
 
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -11,7 +13,7 @@ const FormSignUp = () => {
 
     return <form onSubmit={(e) =>{
         e.preventDefault();
-        console.log({name, lastName, email, prom, nov});
+        handleSubmit({name, lastName, email, prom, nov});
     }}>
     
         <TextField id='name' label='Nombre' variant="outlined" fullWidth margin="normal"
