@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { Button, TextField, Switch, FormGroup, FormControlLabel } from "@mui/material";
 
 const FormSignUp = () => {
 
+    const [name, setName] = useState('OTILIO');
+
     return <form>
     
-        <TextField id='name' label='Nombre' variant="outlined" fullWidth margin="normal"/>
+        <TextField id='name' label='Nombre' variant="outlined" fullWidth margin="normal"
+        onChange={(e)=> {console.log(name); setName(e.target.value);}}
+        value={name}/>
         <TextField id='lastName' label='Apellidos' variant="outlined" fullWidth margin="normal"/>
         <TextField id='email' label='Email' variant="outlined" fullWidth margin="normal"/>
    
