@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Switch, FormGroup, FormControlLabel } from "@mui/material";
 
 const FormSignUp = () => {
 
@@ -8,10 +8,11 @@ const FormSignUp = () => {
         <TextField id='lastName' label='Apellidos' variant="outlined" fullWidth margin="normal"/>
         <TextField id='email' label='Email' variant="outlined" fullWidth margin="normal"/>
    
-        <label>Promociones</label>
-        <input type="checkbox" />
-        <label>Novedades</label>
-        <input type="checkbox" />
+        <FormGroup>
+        <FormControlLabel control={<Switch defaultChecked />} label='Promociones'/>
+        <FormControlLabel control={<Switch defaultChecked />} label='Novedades'/>
+        </FormGroup>
+
         <Button variant="contained">Registrarse</Button>
     </form>
 }
